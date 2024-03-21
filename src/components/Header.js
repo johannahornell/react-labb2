@@ -11,14 +11,20 @@ const Header = ({ todoItems }) => {
         setThingsLeftTodo(filteredTodoItmes)
     }, [todoItems])
 
+    let text
+
+    if (todoItems.length === 0) {
+        text = "You don't have anthing to do, add something below!"
+    } else if (thingsLeftTodo.length > 0) {
+        text = thingsLeftTodo.length + ' more to go!'
+    } else {
+        text = 'All done!'
+    }
+
     return (
         <header className="todo-header">
             <h1>Things To Do</h1>
-            <p>
-                {thingsLeftTodo.length > 0
-                    ? `${thingsLeftTodo.length} more to go!`
-                    : 'All done!'}
-            </p>
+            <p>{text}</p>
         </header>
     )
 }
