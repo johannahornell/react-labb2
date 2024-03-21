@@ -24,6 +24,14 @@ const App = () => {
         return data
     }
 
+    // Fetch single todo from JSON server
+    const fetchTodo = async (id) => {
+        const res = await fetch(`http://localhost:5000/todos/${id}`)
+        const data = await res.json()
+
+        return data
+    }
+
     // Add a new todo
     const addTodo = async (todo) => {
         const res = await fetch('http://localhost:5000/todos', {
@@ -49,10 +57,26 @@ const App = () => {
     }
 
     // Change if todo is completed or not
-    const toggleCompleted = (id) => {
+    const toggleCompleted = async (id) => {
+        const todoToChange = await fetchTodo(id)
+        const updatedTodo = {
+            ...todoToChange,
+            completed: !todoToChange.completed
+        }
+
+        const res = await fetch(`http://localhost:5000/todos/${id}`, {
+            method: 'PUT',
+            header: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedTodo)
+        })
+
+        const data = await res.json()
+
         setTodoItems(
             todoItems.map((todo) =>
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+                todo.id === id ? { ...todo, completed: data.completed } : todo
             )
         )
     }
