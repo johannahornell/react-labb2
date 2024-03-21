@@ -16,6 +16,7 @@ const App = () => {
         getTodos()
     }, [])
 
+    // Fetch todos from JSON server
     const fetchTodos = async () => {
         const res = await fetch('http://localhost:5000/todos')
         const data = await res.json()
@@ -23,16 +24,23 @@ const App = () => {
         return data
     }
 
+    // Add a new todo
     const addTodo = (todo) => {
         const id = Math.floor(Math.random() * 1000) + 1
         const newTodo = { id, ...todo }
         setTodoItems((prevTodoItems) => [...prevTodoItems, newTodo])
     }
 
-    const deleteTodo = (id) => {
+    // Delete a todo
+    const deleteTodo = async (id) => {
+        await fetch(`http://localhost:5000/todos/${id}`, {
+            method: 'DELETE'
+        })
+
         setTodoItems(todoItems.filter((todo) => todo.id !== id))
     }
 
+    // Change if todo is completed or not
     const toggleCompleted = (id) => {
         setTodoItems(
             todoItems.map((todo) =>
