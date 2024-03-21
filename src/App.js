@@ -25,10 +25,18 @@ const App = () => {
     }
 
     // Add a new todo
-    const addTodo = (todo) => {
-        const id = Math.floor(Math.random() * 1000) + 1
-        const newTodo = { id, ...todo }
-        setTodoItems((prevTodoItems) => [...prevTodoItems, newTodo])
+    const addTodo = async (todo) => {
+        const res = await fetch('http://localhost:5000/todos', {
+            method: 'POST',
+            header: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        })
+
+        const data = await res.json()
+
+        setTodoItems((prevTodoItems) => [...prevTodoItems, data])
     }
 
     // Delete a todo
