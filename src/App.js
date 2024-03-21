@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import AddTodo from './components/AddTodo'
 import TodoList from './components/TodoList'
@@ -6,6 +6,22 @@ import Footer from './components/Footer'
 
 const App = () => {
     const [todoItems, setTodoItems] = useState([])
+
+    useEffect(() => {
+        const getTodos = async () => {
+            const todosFromServer = await fetchTodos()
+            setTodoItems(todosFromServer)
+        }
+
+        getTodos()
+    }, [])
+
+    const fetchTodos = async () => {
+        const res = await fetch('http://localhost:5000/todos')
+        const data = await res.json()
+
+        return data
+    }
 
     const addTodo = (todo) => {
         const id = Math.floor(Math.random() * 1000) + 1
