@@ -13,7 +13,7 @@
     {
       "id": "3",
       "text": "Write a grocery list",
-      "completed": true
+      "completed": false
     },
     {
       "id": "4",

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
+import { StyledAddTodo } from './styles/AddTodo.styled'
 
 const AddTodo = ({ onAdd }) => {
     const [text, setText] = useState('')
@@ -23,9 +24,9 @@ const AddTodo = ({ onAdd }) => {
     }
 
     return (
-        <form onSubmit={onSubmit} className="add-todo-form">
-            <h3>Add new todo</h3>
-            <div className="input-wrapper">
+        <StyledAddTodo onSubmit={onSubmit}>
+            <label>Add new todo</label>
+            <div>
                 <input
                     type="text"
                     placeholder="Write todo here"
@@ -34,12 +35,11 @@ const AddTodo = ({ onAdd }) => {
                     ref={inputRef}
                 />
                 <input
-                    className="button button-form"
                     type="submit"
                     value="Add"
                 />
             </div>
-        </form>
+        </StyledAddTodo>
     )
 }
 

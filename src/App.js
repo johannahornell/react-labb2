@@ -1,8 +1,34 @@
 import { useState, useEffect } from 'react'
+import { ThemeProvider } from 'styled-components'
+import ChangeTheme from './components/ChangeTheme'
 import Header from './components/Header'
 import AddTodo from './components/AddTodo'
 import TodoList from './components/TodoList'
 import Footer from './components/Footer'
+import styled from 'styled-components'
+import GlobalStyles from './components/styles/Global'
+
+const theme = {
+    colors: {
+        body: '#efeff1'
+    }
+}
+
+const StyledAppContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 80px 15px 0 15px;
+`
+
+const StyledTodoContent = styled.div`
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+`
 
 const App = () => {
     const [todoItems, setTodoItems] = useState([])
@@ -82,18 +108,22 @@ const App = () => {
     }
 
     return (
-        <div className="app-container">
-            <div className="todo-content">
-                <Header todoItems={todoItems} />
-                <TodoList
-                    todoItems={todoItems}
-                    onToggle={toggleCompleted}
-                    onDelete={deleteTodo}
-                />
-                <AddTodo onAdd={addTodo} />
-            </div>
-            <Footer />
-        </div>
+        <ThemeProvider theme={theme}>
+            <StyledAppContainer>
+                <StyledTodoContent>
+                    <GlobalStyles />
+                    <ChangeTheme />
+                    <Header todoItems={todoItems} />
+                    <TodoList
+                        todoItems={todoItems}
+                        onToggle={toggleCompleted}
+                        onDelete={deleteTodo}
+                    />
+                    <AddTodo onAdd={addTodo} />
+                </StyledTodoContent>
+                <Footer />
+            </StyledAppContainer>
+        </ThemeProvider>
     )
 }
 

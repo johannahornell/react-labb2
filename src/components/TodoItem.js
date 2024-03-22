@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types'
 import { FaRegSquareCheck, FaRegSquare, FaTrash } from 'react-icons/fa6'
+import { StyledTodoItem, StyledTodoText, StyledToggleTodo } from './styles/TodoItem.styled'
 
 const TodoItem = ({ onToggle, onDelete, todo }) => {
     return (
-        <div className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+        <StyledTodoItem>
             <div>
-                <span className="toggle-todo" onClick={() => onToggle(todo.id)}>
+                <StyledToggleTodo onClick={() => onToggle(todo.id)}>
                     {todo.completed ? <FaRegSquareCheck /> : <FaRegSquare />}
-                </span>
-                <span className="todo-text">{todo.text}</span>
+                </StyledToggleTodo>
+                <StyledTodoText $completed={todo.completed}>{todo.text}</StyledTodoText>
             </div>
             <FaTrash
                 style={{ cursor: 'pointer', color: '#4b4b4b' }}
                 onClick={() => onDelete(todo.id)}
             />
-        </div>
+        </StyledTodoItem>
     )
 }
 

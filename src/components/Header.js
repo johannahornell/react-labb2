@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { StyledHeader } from './styles/Header.styled'
 
 const Header = ({ todoItems }) => {
     const [thingsLeftTodo, setThingsLeftTodo] = useState([])
@@ -22,10 +23,10 @@ const Header = ({ todoItems }) => {
     }
 
     return (
-        <header className="todo-header">
+        <StyledHeader>
             <h1>Things To Do</h1>
             <p>{text}</p>
-        </header>
+        </StyledHeader>
     )
 }
 

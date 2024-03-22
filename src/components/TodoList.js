@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types'
 import TodoItem from './TodoItem'
+import styled from 'styled-components'
+
+const StyledTodoList = styled.div`
+    margin-bottom: 30px;
+`
 
 export const TodoList = ({ todoItems, onToggle, onDelete }) => {
     return (
-        <div className="todo-list">
+        <StyledTodoList>
             {todoItems.map((todo) => (
                 <TodoItem
                     key={todo.id}
@@ -12,7 +17,7 @@ export const TodoList = ({ todoItems, onToggle, onDelete }) => {
                     onDelete={onDelete}
                 />
             ))}
-        </div>
+        </StyledTodoList>
     )
 }
 
