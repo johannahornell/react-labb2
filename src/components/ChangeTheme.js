@@ -1,9 +1,11 @@
 import { StyledChangeTheme } from './styles/ChangeTheme.styled'
+import { lightTheme, darkTheme } from './styles/Theme.styled'
 
-const ChangeTheme = () => {
+const ChangeTheme = ({ onClick }) => {
     return (
         <StyledChangeTheme>
-            <p>Change theme</p>
+            <button onClick={() => onClick(darkTheme)}>Dark theme</button>
+            <button onClick={() => onClick(lightTheme)}>Light Theme</button>
         </StyledChangeTheme>
     )
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledTodoItem = styled.div`
-    background-color: #efeff1;
+    background-color: ${({ theme }) => theme.colors.todoItem};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,7 +10,8 @@ export const StyledTodoItem = styled.div`
     margin-bottom: 5px;
 `
 export const StyledTodoText = styled.span`
-    text-decoration: ${({ $completed }) => ($completed ? 'line-through' : 'unset')};
+    text-decoration: ${({ $completed }) =>
+        $completed ? 'line-through' : 'unset'};
     opacity: ${({ $completed }) => ($completed ? '0.6' : '1')};
 `
 

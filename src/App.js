@@ -7,12 +7,7 @@ import TodoList from './components/TodoList'
 import Footer from './components/Footer'
 import styled from 'styled-components'
 import GlobalStyles from './components/styles/Global'
-
-const theme = {
-    colors: {
-        body: '#efeff1'
-    }
-}
+import { lightTheme } from './components/styles/Theme.styled'
 
 const StyledAppContainer = styled.div`
     display: flex;
@@ -23,7 +18,7 @@ const StyledAppContainer = styled.div`
 `
 
 const StyledTodoContent = styled.div`
-    background: #fff;
+    background: ${({ theme }) => theme.colors.content};
     width: 100%;
     max-width: 400px;
     padding: 30px;
@@ -32,6 +27,7 @@ const StyledTodoContent = styled.div`
 
 const App = () => {
     const [todoItems, setTodoItems] = useState([])
+    const [selectedTheme, setSelectedTheme] = useState(lightTheme)
 
     useEffect(() => {
         const getTodos = async () => {
@@ -107,12 +103,17 @@ const App = () => {
         )
     }
 
+    //Change selected theme
+    const handleThemeChange = (theme) => {
+        setSelectedTheme(theme)
+    }
+
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={selectedTheme}>
             <StyledAppContainer>
                 <StyledTodoContent>
                     <GlobalStyles />
-                    <ChangeTheme />
+                    <ChangeTheme onClick={handleThemeChange} />
                     <Header todoItems={todoItems} />
                     <TodoList
                         todoItems={todoItems}

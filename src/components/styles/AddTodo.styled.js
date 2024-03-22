@@ -31,8 +31,8 @@ export const StyledAddTodo = styled.form`
     }
 
     input[type='submit'] {
-        background-color: #4b4b4b;
-        color: #fff;
+        background-color: ${({ theme }) => theme.colors.buttonBackground};
+        color: ${({ theme }) => theme.colors.buttonText};
         border: none;
         border-radius: 6px;
         border-top-left-radius: 0;
