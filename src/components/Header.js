@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { StyledHeader } from './styles/Header.styled'
+import styled from 'styled-components'
+
+const StyledHeader = styled.header`
+    margin-bottom: 30px;
+
+    h1 {
+        margin-top: 0;
+    }
+`
 
 const Header = ({ todoItems }) => {
     const [thingsLeftTodo, setThingsLeftTodo] = useState([])

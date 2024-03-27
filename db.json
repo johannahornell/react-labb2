@@ -11,14 +11,14 @@
       "completed": false
     },
     {
-      "id": "3",
-      "text": "Write a grocery list",
-      "completed": false
-    },
-    {
       "id": "4",
       "text": "Finish up Laboration 1 i React",
       "completed": true
+    },
+    {
+      "id": "f738",
+      "text": "Do homework",
+      "completed": false
     }
   ]
 }

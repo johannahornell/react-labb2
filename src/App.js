@@ -5,25 +5,12 @@ import Header from './components/Header'
 import AddTodo from './components/AddTodo'
 import TodoList from './components/TodoList'
 import Footer from './components/Footer'
-import styled from 'styled-components'
 import GlobalStyles from './components/styles/Global'
+import {
+    StyledAppContainer,
+    StyledTodoContent
+} from './components/styles/ContainerStyled'
 import { lightTheme } from './components/styles/Theme.styled'
-
-const StyledAppContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 80px 15px 0 15px;
-`
-
-const StyledTodoContent = styled.div`
-    background: ${({ theme }) => theme.colors.content};
-    width: 100%;
-    max-width: 400px;
-    padding: 30px;
-    border-radius: 10px;
-`
 
 const App = () => {
     const [todoItems, setTodoItems] = useState([])
@@ -113,7 +100,10 @@ const App = () => {
             <StyledAppContainer>
                 <StyledTodoContent>
                     <GlobalStyles />
-                    <ChangeTheme onClick={handleThemeChange} />
+                    <ChangeTheme
+                        onClick={handleThemeChange}
+                        currentTheme={selectedTheme}
+                    />
                     <Header todoItems={todoItems} />
                     <TodoList
                         todoItems={todoItems}

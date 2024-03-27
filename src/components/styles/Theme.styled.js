@@ -5,7 +5,10 @@ export const lightTheme = {
         content: '#ffffff',
         buttonBackground: '#4b4b4b',
         buttonText: '#ffffff',
-        todoItem: '#f3f3f5'
+        todoItem: '#f3f3f5',
+        inputBackground: '#ffffff',
+        inputBorder: '#cbcbcb',
+        inputBoxShadow: 'rgba(0, 0, 0, 0.1)'
     }
 }
 
@@ -16,6 +19,9 @@ export const darkTheme = {
         content: '#323233',
         buttonBackground: '#4b4b4b',
         buttonText: '#ffffff',
-        todoItem: '#262627'
+        todoItem: '#262627',
+        inputBackground: '#323233',
+        inputBorder: '#4b4b4b',
+        inputBoxShadow: 'rgba(0, 0, 0, 0.25)'
     }
 }

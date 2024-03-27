@@ -7,7 +7,8 @@ export const StyledAddTodo = styled.form`
     }
 
     div:focus-within {
-        box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 4px 2px
+            ${({ theme }) => theme.colors.inputBoxShadow};
     }
 
     label {
@@ -18,10 +19,12 @@ export const StyledAddTodo = styled.form`
     }
 
     input[type='text'] {
+        background-color: ${({ theme }) => theme.colors.inputBackground};
         width: 100%;
         font-size: 16px;
         padding: 10px 12px;
-        border: 1px solid rgb(203, 203, 203);
+        border: 1px solid;
+        border-color: ${({ theme }) => theme.colors.inputBorder};
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
 
