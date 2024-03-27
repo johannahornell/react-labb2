@@ -8,17 +8,22 @@
     {
       "id": "2",
       "text": "Answer important email",
-      "completed": false
-    },
-    {
-      "id": "4",
-      "text": "Finish up Laboration 1 i React",
       "completed": true
     },
     {
-      "id": "f738",
-      "text": "Do homework",
+      "id": "aefa",
+      "text": "Go for a walk",
       "completed": false
+    },
+    {
+      "id": "b5cd",
+      "text": "Tidy up apartment",
+      "completed": false
+    },
+    {
+      "id": "29ec",
+      "text": "Finish up Laboration 2 i React",
+      "completed": true
     }
   ]
 }

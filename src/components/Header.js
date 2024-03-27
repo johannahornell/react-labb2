@@ -1,17 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import { StyledHeader } from './styles/Header.styled'
 
-const StyledHeader = styled.header`
-    margin-bottom: 30px;
-
-    h1 {
-        margin-top: 0;
+//Use reducer to set width of progressbar
+const reducer = (progressbar, action) => {
+    switch (action.type) {
+        case 'set_width':
+            return { width: action.payload }
+        default:
+            throw new Error('Error: Unknown action type ' + action.type)
     }
-`
+}
 
 const Header = ({ todoItems }) => {
     const [thingsLeftTodo, setThingsLeftTodo] = useState([])
+    const [amountLeftPercentage, setAmountLeftPercentage] = useState(0)
+    const [progressbar, dispatch] = useReducer(reducer, {})
 
     useEffect(() => {
         const filteredTodoItmes = todoItems.filter(
@@ -19,7 +23,13 @@ const Header = ({ todoItems }) => {
         )
         setThingsLeftTodo(filteredTodoItmes)
 
-    }, [todoItems])
+        const newAmountLeftPercentage =
+            100 - (filteredTodoItmes.length / todoItems.length) * 100
+
+        setAmountLeftPercentage(newAmountLeftPercentage)
+
+        dispatch({ type: 'set_width', payload: amountLeftPercentage })
+    }, [todoItems, amountLeftPercentage])
 
     let text
 
@@ -35,6 +45,9 @@ const Header = ({ todoItems }) => {
         <StyledHeader>
             <h1>Things To Do</h1>
             <p>{text}</p>
+            <div>
+                <span style={{ width: progressbar.width + '%' }}></span>
+            </div>
         </StyledHeader>
     )
 }

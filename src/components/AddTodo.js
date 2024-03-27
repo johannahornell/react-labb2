@@ -25,10 +25,11 @@ const AddTodo = ({ onAdd }) => {
 
     return (
         <StyledAddTodo onSubmit={onSubmit}>
-            <label>Add new todo</label>
+            <label htmlFor="todo">Add new todo</label>
             <div>
                 <input
                     type="text"
+                    id="todo"
                     placeholder="Write todo here"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
