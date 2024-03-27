@@ -20,6 +20,7 @@ export const StyledAddTodo = styled.form`
 
     input[type='text'] {
         background-color: ${({ theme }) => theme.colors.inputBackground};
+        color: ${({ theme }) => theme.colors.text};
         width: 100%;
         font-size: 16px;
         padding: 10px 12px;

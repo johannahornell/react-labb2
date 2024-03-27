@@ -45,9 +45,13 @@ const Header = ({ todoItems }) => {
         <StyledHeader>
             <h1>Things To Do</h1>
             <p>{text}</p>
-            <div>
-                <span style={{ width: progressbar.width + '%' }}></span>
-            </div>
+            {todoItems.length ? (
+                <div>
+                    <span style={{ width: progressbar.width + '%' }}></span>
+                </div>
+            ) : (
+                ''
+            )}
         </StyledHeader>
     )
 }
