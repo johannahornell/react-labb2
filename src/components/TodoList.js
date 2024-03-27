@@ -6,16 +6,11 @@ const StyledTodoList = styled.div`
     margin-bottom: 30px;
 `
 
-export const TodoList = ({ todoItems, onToggle, onDelete }) => {
+export const TodoList = ({ todoItems }) => {
     return (
         <StyledTodoList>
             {todoItems.map((todo) => (
-                <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    onToggle={onToggle}
-                    onDelete={onDelete}
-                />
+                <TodoItem key={todo.id} todo={todo} />
             ))}
         </StyledTodoList>
     )

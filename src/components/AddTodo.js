@@ -34,10 +34,7 @@ const AddTodo = ({ onAdd }) => {
                     onChange={(e) => setText(e.target.value)}
                     ref={inputRef}
                 />
-                <input
-                    type="submit"
-                    value="Add"
-                />
+                <input type="submit" value="Add" />
             </div>
         </StyledAddTodo>
     )

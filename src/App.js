@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import { ThemeProvider } from 'styled-components'
 import ChangeTheme from './components/ChangeTheme'
 import Header from './components/Header'
@@ -11,6 +11,10 @@ import {
     StyledTodoContent
 } from './components/styles/ContainerStyled'
 import { lightTheme } from './components/styles/Theme.styled'
+
+// useContext hook to avoid prop drilling
+export const deleteTodoContext = createContext()
+export const toggleCompletedContext = createContext()
 
 const App = () => {
     const [todoItems, setTodoItems] = useState([])
@@ -29,7 +33,6 @@ const App = () => {
     const fetchTodos = async () => {
         const res = await fetch('http://localhost:5000/todos')
         const data = await res.json()
-
         return data
     }
 
@@ -37,7 +40,6 @@ const App = () => {
     const fetchTodo = async (id) => {
         const res = await fetch(`http://localhost:5000/todos/${id}`)
         const data = await res.json()
-
         return data
     }
 
@@ -105,11 +107,11 @@ const App = () => {
                         currentTheme={selectedTheme}
                     />
                     <Header todoItems={todoItems} />
-                    <TodoList
-                        todoItems={todoItems}
-                        onToggle={toggleCompleted}
-                        onDelete={deleteTodo}
-                    />
+                    <toggleCompletedContext.Provider value={toggleCompleted}>
+                        <deleteTodoContext.Provider value={deleteTodo}>
+                            <TodoList todoItems={todoItems} />
+                        </deleteTodoContext.Provider>
+                    </toggleCompletedContext.Provider>
                     <AddTodo onAdd={addTodo} />
                 </StyledTodoContent>
                 <Footer />

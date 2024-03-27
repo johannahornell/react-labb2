@@ -18,6 +18,7 @@ const Header = ({ todoItems }) => {
             (todo) => todo.completed === false
         )
         setThingsLeftTodo(filteredTodoItmes)
+
     }, [todoItems])
 
     let text

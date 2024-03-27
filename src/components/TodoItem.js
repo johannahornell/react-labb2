@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { FaRegSquareCheck, FaRegSquare, FaTrash } from 'react-icons/fa6'
 import {
@@ -5,8 +6,12 @@ import {
     StyledTodoText,
     StyledToggleTodo
 } from './styles/TodoItem.styled'
+import { deleteTodoContext, toggleCompletedContext } from '../App'
 
-const TodoItem = ({ onToggle, onDelete, todo }) => {
+const TodoItem = ({ todo }) => {
+    const onToggle = useContext(toggleCompletedContext)
+    const onDelete = useContext(deleteTodoContext)
+
     return (
         <StyledTodoItem>
             <div>
